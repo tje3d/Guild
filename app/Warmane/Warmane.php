@@ -19,8 +19,10 @@ class Warmane implements WowWebsite
         $name     = ucfirst($name);
         $url      = sprintf($this->characterUrl, $name);
 
-        $response = (string) (new \GuzzleHttp\Client)->get($url)->getBody();
+        return \Cache::remember("warmane_character_{$name}", 60, function() use($url){
+        	$response = (string) (new \GuzzleHttp\Client)->get($url)->getBody();
 
-        return new Character(DomParser::parse($response));
+	        return new Character(DomParser::parse($response));
+        });
     }
 }
