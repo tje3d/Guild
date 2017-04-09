@@ -14,6 +14,10 @@ class Character implements BaseCharacter
         $this->data = $data;
     }
 
+    /**
+     * Realm name
+     * @return string|null
+     */
     public function realm()
     {
         $target = $this->data->find('.level-race-class', 0);
@@ -26,6 +30,10 @@ class Character implements BaseCharacter
         return ucfirst(trim(strtolower($realm)));
     }
 
+    /**
+     * Race name
+     * @return string|null
+     */
     public function race()
     {
         $races  = \App\Race::get()->pluck('name');
@@ -45,6 +53,10 @@ class Character implements BaseCharacter
         return null;
     }
 
+    /**
+     * Class name
+     * @return string|null
+     */
     public function klass()
     {
         $klasses = \App\Klass::get()->pluck('name');
@@ -64,6 +76,10 @@ class Character implements BaseCharacter
         return null;
     }
 
+    /**
+     * Level
+     * @return int|null
+     */
     public function level()
     {
     	$target = $this->data->find('.level-race-class', 0);
@@ -82,6 +98,10 @@ class Character implements BaseCharacter
         return null;
     }
 
+    /**
+     * Guild Name
+     * @return string|null
+     */
     public function guild()
     {
     	$target = $this->data->find('.guild-name a', 0);
@@ -93,12 +113,20 @@ class Character implements BaseCharacter
         return trim($target->innerText());
     }
 
+    /**
+     * Faction
+     * @return string
+     */
     public function faction()
     {
     	$alliance = ['Human', 'Dwarf', 'Night Elf', 'Gnome', 'Draenei'];
         return in_array($this->race(), $alliance) ? 'Alliance' : 'Horde';
     }
 
+    /**
+     * Gender
+     * @return string
+     */
     public function gender()
     {
     	return preg_match("/female/", $this->data) ? 'Female' : 'Male';
