@@ -26,8 +26,8 @@ class DefaultRaces extends Seeder
 
         foreach ($data as $row) {
             \App\Race::create([
-                'name' => $row[0],
-                'icon' => $row[1],
+                'name'  => $row[0],
+                'image' => $row[1],
             ]);
         }
     }

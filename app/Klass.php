@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Race extends Model
+class Klass extends Model
 {
     protected $guarded = [];
 }
