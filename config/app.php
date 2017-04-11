@@ -14,6 +14,8 @@ return [
 
     'name'            => env('APP_NAME', 'Laravel'),
 
+    'version'         => '2.0.0',
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment
@@ -168,6 +170,8 @@ return [
          */
         Laravel\Tinker\TinkerServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Yajra\Datatables\DatatablesServiceProvider::class,
+        Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -229,6 +233,9 @@ return [
         'Warmane'      => Facades\App\Warmane\Warmane::class,
         'Form'         => Collective\Html\FormFacade::class,
         'Html'         => Collective\Html\HtmlFacade::class,
+        'Datatables'   => Yajra\Datatables\Facades\Datatables::class,
+        'Gravatar'     => Thomaswelton\LaravelGravatar\Facades\Gravatar::class,
+        'Nav'          => Facades\App\Helpers\NavHelper::class,
 
     ],
 
