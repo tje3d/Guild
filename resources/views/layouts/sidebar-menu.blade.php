@@ -46,9 +46,21 @@
 			</span>
 		</a>
 		<ul class="treeview-menu">
-			<li><a href="{{route('users')}}">
-				<i class="fa fa-circle-o"></i> Rules
-			</a></li>
+			<li class="{{Nav::is('settings.rules', 'active')}}">
+				<a href="{{route('settings.rules')}}">
+					<i class="fa fa-circle-o"></i> Rules
+				</a>
+			</li>
+			<li class="{{Nav::is('settings.teamspeak', 'active')}}">
+				<a href="{{route('settings.teamspeak')}}">
+					<i class="fa fa-circle-o"></i> TeamSpeak
+				</a>
+			</li>
+			<li class="{{Nav::is('settings.raidtime', 'active')}}">
+				<a href="{{route('settings.raidtime')}}">
+					<i class="fa fa-circle-o"></i> RaidTime
+				</a>
+			</li>
 		</ul>
 	</li>
 </ul>

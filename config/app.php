@@ -172,6 +172,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Yajra\Datatables\DatatablesServiceProvider::class,
         Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider::class,
+        Appstract\Options\OptionsServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -236,6 +237,8 @@ return [
         'Datatables'   => Yajra\Datatables\Facades\Datatables::class,
         'Gravatar'     => Thomaswelton\LaravelGravatar\Facades\Gravatar::class,
         'Nav'          => Facades\App\Helpers\NavHelper::class,
+        'Setting'      => Appstract\Options\OptionFacade::class,
+        'Markdown'     => Facades\Parsedown::class,
 
     ],
 
