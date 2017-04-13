@@ -7,7 +7,7 @@
 	<!-- Tell the browser to be responsive to screen width -->
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
 	<!-- Ionicons -->
@@ -45,13 +45,13 @@
 					<ul class="nav navbar-nav">
 						<li class="dropdown user user-menu">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								<img src="{{Gravatar::src(\Auth::user()->email)}}" class="user-image" alt="User Image">
+								<img src="{{\Auth::user()->avatar()}}" class="user-image" alt="User Image">
 								<span class="hidden-xs">{{\Auth::user()->name}}</span>
 							</a>
 							<ul class="dropdown-menu">
 								<!-- User image -->
 								<li class="user-header">
-									<img src="{{Gravatar::src(\Auth::user()->email)}}" class="img-circle" alt="User Image">
+									<img src="{{\Auth::user()->avatar()}}" class="img-circle" alt="User Image">
 									<p>
 										{{\Auth::user()->name}} - {{\Auth::user()->email}}
 										<small>Member since {{\Auth::user()->created_at->format("F. Y")}}</small>
@@ -60,7 +60,7 @@
 								<!-- Menu Footer-->
 								<li class="user-footer">
 									<div class="pull-left">
-										<a href="#" class="btn btn-default btn-flat">Profile</a>
+										<a href="{{route('profile')}}" class="btn btn-default btn-flat">Profile</a>
 									</div>
 									<div class="pull-right">
 										<a href="{{route('logout')}}" class="btn btn-default btn-flat">Sign out</a>
@@ -81,7 +81,7 @@
 			<section class="sidebar">
 				<div class="user-panel">
 					<div class="pull-left image">
-						<img src="{{Gravatar::src(Auth::user()->email)}}" class="img-circle" alt="User Image">
+						<img src="{{\Auth::user()->avatar()}}" class="img-circle" alt="User Image">
 					</div>
 					<div class="pull-left info">
 						<p>{{\Auth::user()->name}} <i style="font-size: 10px">Online</i></p>

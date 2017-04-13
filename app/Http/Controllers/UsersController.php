@@ -100,6 +100,6 @@ class UsersController extends Controller
     {
     	$user->delete();
     	
-    	return back()->with('success', 'Deleted Successfull');
+    	return back()->with('success', 'Deleted Successful');
     }
 }

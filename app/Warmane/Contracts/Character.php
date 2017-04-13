@@ -9,6 +9,12 @@ interface Character
 	public function __construct(Dom $data);
 
 	/**
+	 * Character found?
+	 * @return bool
+	 */
+	public function exists();
+
+	/**
 	 * Realm Name
 	 * @return string|null
 	 */

@@ -26,6 +26,6 @@ class RulesController extends Controller
 
 		Setting::set('rules', $request->rules);
 
-		return back()->with('success', 'Edited Successfull');
+		return back()->with('success', 'Edited Successful');
 	}
 }

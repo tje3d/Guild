@@ -15,6 +15,15 @@ class Character implements BaseCharacter
     }
 
     /**
+     * Character found?
+     * @return bool
+     */
+    public function exists()
+    {
+    	return $this->level() !== null;
+    }
+
+    /**
      * Realm name
      * @return string|null
      */

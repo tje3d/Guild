@@ -21,11 +21,15 @@ class RaidTimeController extends Controller
     public function postIndex(Request $request)
     {
         $this->validate($request, [
-            'raidtime' => 'required',
+            'raidtime'     => 'required',
+            'raidtime_day' => 'required',
         ]);
 
-        Setting::set('raidtime', $request->raidtime);
+        Setting::set([
+            'raidtime'     => $request->raidtime,
+            'raidtime_day' => $request->raidtime_day,
+        ]);
 
-        return back()->with('success', 'Edited Successfull');
+        return back()->with('success', 'Edited Successful');
     }
 }

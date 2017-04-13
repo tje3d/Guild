@@ -26,6 +26,6 @@ class TeamSpeakController extends Controller
 
         Setting::set('teamspeak_server', $request->teamspeak_server);
 
-        return back()->with('success', 'Edited Successfull');
+        return back()->with('success', 'Edited Successful');
     }
 }
