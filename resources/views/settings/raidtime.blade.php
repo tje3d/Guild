@@ -19,7 +19,7 @@
 			</div>
 		</div>
 		<div class="form-group {{$errors->first('raidtime_day', 'has-error')}}">
-			{!! Form::label('raidtime_day', 'Dail RaidTimes', ['class' => 'col-sm-2 control-label']) !!}
+			{!! Form::label('raidtime_day', 'Daily RaidTimes', ['class' => 'col-sm-2 control-label']) !!}
 			<div class="col-sm-10">
 				{!! Form::textarea('raidtime_day', Setting::get('raidtime_day'), ['class' => 'form-control', 'spellcheck' => 'false']) !!}
 				{!!$errors->first('raidtime_day', '<span class="help-block">:message</span>')!!}
