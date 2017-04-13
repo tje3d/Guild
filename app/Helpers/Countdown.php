@@ -33,6 +33,6 @@ class Countdown
 	 */
 	public static function formatDate($input, $time)
 	{
-		return strtotime(date("Y-m-d {$input[0]}:00:00", $time));
+		return strtotime(date("Y-m-d {$input}:00:00", $time));
 	}
 }
