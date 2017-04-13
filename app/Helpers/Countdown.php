@@ -11,7 +11,7 @@ class Countdown
 	{
 		$time = self::raidTime();
 
-		if (date("H:i") < $time) {
+		if (date("H") < $time) {
 			return self::formatDate($time, time());
 		}
 
@@ -23,9 +23,9 @@ class Countdown
 	 */
 	public static function raidTime()
 	{
-		$time = \Setting::get('raidtime', 'Start 11:32, End: 15:30');
-		$time = preg_replace("/[^0-9\:]/", '', explode(',', $time)[0]);
-		return $time;
+		$time = \Setting::get('raidtime', 'Start 16 [4PM] , End 19 [7PM] (GMT)');
+		preg_match("/ (\d+) /", explode(',', $time)[0], $match);
+		return $match[1];
 	}
 
 	/**
@@ -33,7 +33,6 @@ class Countdown
 	 */
 	public static function formatDate($input, $time)
 	{
-		$input = explode(":", $input);
-		return strtotime(date("Y-m-d {$input[0]}:{$input[1]}:00", $time));
+		return strtotime(date("Y-m-d {$input[0]}:00:00", $time));
 	}
 }
