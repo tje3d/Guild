@@ -53,6 +53,7 @@ Route::group(['prefix' => 'panel', 'middleware' => 'auth'], function () {
         Route::get('datatable', 'CharactersController@datatable')->name('characters.datatable');
         Route::get('create', 'CharactersController@create')->name('characters.create');
         Route::post('create', 'CharactersController@postCreate');
+        Route::get('{character}/delete', 'CharactersController@delete')->name('characters.delete');
         Route::get('{character}/edit', 'CharactersController@edit')->name('characters.edit');
         Route::post('{character}/edit', 'CharactersController@postEdit');
         Route::get('{character}/delete', 'CharactersController@delete')->name('characters.delete');

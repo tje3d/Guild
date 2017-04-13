@@ -53,6 +53,16 @@ class CharactersController extends Controller
     }
 
     /**
+     * Delete a character
+     */
+    public function delete(Character $character)
+    {
+    	$character->delete();
+
+    	return back()->with('success', 'Character deleted successful.');
+    }
+
+    /**
      * Create page
      * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory
      */
