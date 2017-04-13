@@ -19,6 +19,7 @@
 |
 */
 
+require __DIR__.'/../app/Helpers.php';
 require __DIR__.'/../bootstrap/autoload.php';
 
 /*
