@@ -103,6 +103,7 @@
                     <ul class="nk-nav nk-nav-right hidden-md-down" data-nav-mobile="#nk-nav-mobile">
                         <li class="{{Nav::is('home', 'active')}}">
                             <a href="{{route('home')}}"> Home</a>
+                        </li>
                         <li class="{{Nav::is('rules', 'active')}}">
                             <a href="{{route('rules')}}"> Rules</a>
                         </li>
