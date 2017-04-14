@@ -29,6 +29,12 @@
 		@endforeach
 	</div>
 	<div class="col-md-8 offset-md-2">
+		<div class="form-group {{ $errors->first("rules", 'nk-error') }}">
+			<label class="text-main-1">{!! Form::checkbox('rules') !!} I agree to the {{config('app.name')}} <a href="{{route('rules')}}" target="_blank">Rules</a></label>
+			{!! $errors->first("rules", '<br/><span class="nk-error">:message</span>') !!}
+		</div>
+	</div>
+	<div class="col-md-8 offset-md-2">
 		<button class="nk-btn nk-btn-lg nk-btn-block link-effect-4">Submit <i class="ion-arrow-right-c"></i></button>
 		<br>
 	</div>

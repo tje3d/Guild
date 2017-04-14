@@ -87,6 +87,10 @@ class ApplyController extends Controller
         $messageBag = new MessageBag();
         $questions  = $request->get('question', []);
 
+        if (!$request->rules) {
+        	$messageBag->add("rules", 'Please accepts our rules.');
+        }
+
         foreach (\App\Question::get() as $question) {
             if (empty($questions[$question->id])) {
                 $messageBag->add("question[{$question->id}]", 'Please answer this question.');
