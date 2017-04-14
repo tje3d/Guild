@@ -14,7 +14,7 @@ class DashboardController extends Controller
 		if (RBAC::isAdmin()) {
 			$route = 'users';
 		} else if (RBAC::isOfficer()) {
-			$route = 'settings.rules';
+			$route = 'settings.stream';
 		}
 
 		if (empty($route)) {
