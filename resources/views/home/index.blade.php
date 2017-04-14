@@ -134,7 +134,7 @@
 	<div class="nk-gap-2"></div>
 	<div class="row">
 		<div class="col-md-8 offset-md-2">
-			<iframe src="https://player.twitch.tv/?channel={{Setting::get('stream_channel')}}&autoplay={{Setting::get('stream_autoplay')}}&muted={{Setting::get('stream_muted')}}" style="display: block; width: 100%; height: 455px;" frameborder="0"></iframe>
+			<iframe allowFullScreen="true" src="https://player.twitch.tv/?channel={{Setting::get('stream_channel')}}&autoplay={{Setting::get('stream_autoplay')}}&muted={{Setting::get('stream_muted')}}" style="display: block; width: 100%; height: 455px;" frameborder="0"></iframe>
 		</div>
 	</div>
 	<div class="nk-gap-2"></div>
