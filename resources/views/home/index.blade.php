@@ -176,7 +176,7 @@
 		<div>
 			<div>
 				<blockquote class="nk-testimonial-2">
-					<div class="nk-testimonial-photo" style="background-image: url('/assets/site/images/avatar-1-sm.jpg');"></div>
+					<div class="nk-testimonial-photo" style="background-image: url('/img/wenomica.png');"></div>
 					<div class="nk-testimonial-name h4">Wenomica</div>
 					<div class="nk-testimonial-source">Guild Master</div>
 				</blockquote>
@@ -186,6 +186,7 @@
 			<div>
 				<blockquote class="nk-testimonial-2">
 					<div class="nk-testimonial-photo" style="background-image: url('/img/tje3d.jpg');"></div>
+					<div class="nk-testimonial-body">tje3d@yahoo.com</div>
 					<div class="nk-testimonial-name h4">Moein</div>
 					<div class="nk-testimonial-source">Web Developer</div>
 				</blockquote>
