@@ -17,6 +17,10 @@ class DashboardController extends Controller
 			$route = 'settings.rules';
 		}
 
+		if (empty($route)) {
+			throw new \Exception('Please define a home page.');
+		}
+
 		return redirect()->route($route);
 	}
 }
