@@ -25,6 +25,20 @@
 				{!!$errors->first('stream_enable', '<span class="help-block">:message</span>')!!}
 			</div>
 		</div>
+		<div class="form-group {{$errors->first('stream_autoplay', 'has-error')}}">
+			{!! Form::label('stream_autoplay', 'AutoPlay', ['class' => 'col-sm-2 control-label']) !!}
+			<div class="col-sm-4">
+				{!! Form::select('stream_autoplay', ['true' => 'Yes', 'false' => 'No'], Setting::get('stream_autoplay'), ['class' => 'form-control']) !!}
+				{!!$errors->first('stream_autoplay', '<span class="help-block">:message</span>')!!}
+			</div>
+		</div>
+		<div class="form-group {{$errors->first('stream_muted', 'has-error')}}">
+			{!! Form::label('stream_muted', 'Muted', ['class' => 'col-sm-2 control-label']) !!}
+			<div class="col-sm-4">
+				{!! Form::select('stream_muted', ['true' => 'Yes', 'false' => 'No'], Setting::get('stream_muted'), ['class' => 'form-control']) !!}
+				{!!$errors->first('stream_muted', '<span class="help-block">:message</span>')!!}
+			</div>
+		</div>
 	</div>
 	<div class="box-footer">
 		<div class="col-sm-offset-2">
