@@ -74,6 +74,13 @@
 		</ul>
 	</li>
 	@endif
+	@if(RBAC::isAdmin())
+	<li class="treeview {{Nav::regex('imagegallery', 'active')}}">
+		<a href="{{route('imagegallery')}}">
+			<i class="fa fa-image"></i> <span>Image Gallery</span>
+		</a>
+	</li>
+	@endif
 	@if(RBAC::isAdmin() || Auth::user()->hasAnyPermission('settings.rules', 'settings.teamspeak', 'settings.raidtime', 'settings.stream'))
 	<li class="treeview {{Nav::regex('settings', 'active')}}">
 		<a href="#">

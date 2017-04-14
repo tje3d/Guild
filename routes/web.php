@@ -83,6 +83,12 @@ Route::group(['prefix' => 'panel', 'middleware' => 'auth'], function () {
         Route::get('{character}/setstatus/{type}', 'CharactersController@setStatus')->name('characters.setstatus');
     });
 
+    Route::group(['prefix' => 'imagegallery'], function(){
+    	Route::get('/', 'ImageGalleryController@index')->name('imagegallery');
+    	Route::post('/', 'ImageGalleryController@postIndex');
+    	Route::get('/{imageGallery}/delete', 'ImageGalleryController@delete')->name('imagegallery.delete');
+    });
+
     // Settings
     Route::group(['prefix' => 'settings', 'namespace' => 'Settings'], function () {
         Route::get('rules', 'RulesController@index')->name('settings.rules');

@@ -5,7 +5,7 @@
 {{-- Header --}}
 <div class="nk-header-title nk-header-title-lg nk-header-title-parallax-opacity">
 	<div class="bg-image">
-		<div style="background-image: url('http://ktdguild.ir/img/lichking.jpg'); background-position: 0 0"></div>
+		<div style="background-image: url('/img/lichking.jpg'); background-position: 0 0"></div>
 	</div>
 	<div class="nk-header-table">
 		<div class="nk-header-table-cell">
@@ -38,21 +38,11 @@
     <div id="rev_slider_50_1_wrapper" class="rev_slider_wrapper fullscreen-container" data-alias="photography-carousel48" style="padding:0px;">
         <div id="rev_slider_50_1" class="rev_slider fullscreenbanner" style="display:none;" data-version="5.0.7">
             <ul>
-                <!-- SLIDE  -->
-                <li data-index="rs-185" data-transition="slideoverhorizontal" data-slotamount="7" data-easein="default" data-easeout="default" data-masterspeed="1500" data-thumb="{{asset('img/ss1.jpg')}}" data-rotate="0" data-saveperformance="off">
-                    <!-- MAIN IMAGE -->
-                    <img src="{{asset('img/ss1.jpg')}}" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
+            	@foreach(\App\ImageGallery::latest()->get() as $imageGallery)
+                <li data-index="rs-185" data-transition="slideoverhorizontal" data-slotamount="7" data-easein="default" data-easeout="default" data-masterspeed="1500" data-thumb="{{$imageGallery->getFirstMedia('images')->getUrl('thumb')}}" data-rotate="0" data-saveperformance="off">
+                    <img src="{{$imageGallery->getFirstMedia('images')->getUrl('site')}}" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
                 </li>
-                <!-- SLIDE  -->
-                <li data-index="rs-192" data-transition="slideoververtical" data-slotamount="7" data-easein="default" data-easeout="default" data-masterspeed="1500" data-thumb="{{asset('img/ss2.jpg')}}" data-rotate="0" data-saveperformance="off">
-                    <!-- MAIN IMAGE -->
-                    <img src="{{asset('img/ss2.jpg')}}" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
-                </li>
-                <!-- SLIDE  -->
-                <li data-index="rs-186" data-transition="slideoverhorizontal" data-slotamount="7" data-easein="default" data-easeout="default" data-masterspeed="1500" data-thumb="{{asset('img/ss3.jpg')}}" data-rotate="0" data-saveperformance="off">
-                    <!-- MAIN IMAGE -->
-                    <img src="{{asset('img/ss3.jpg')}}" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
-                </li>
+                @endforeach
             </ul>
             <div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;"></div>
         </div>

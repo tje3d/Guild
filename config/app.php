@@ -174,6 +174,7 @@ return [
         Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider::class,
         Appstract\Options\OptionsServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
+        Spatie\MediaLibrary\MediaLibraryServiceProvider::class,
 
         /*
          * Application Service Providers...
