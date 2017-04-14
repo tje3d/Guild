@@ -128,17 +128,19 @@
 </div>
 
 {{-- Video --}}
-{{-- <div class="container">
+@if(Setting::get('stream_enable', 'no') == 'yes')
+<div class="container">
 	<div class="nk-gap-6"></div>
 	<div class="nk-gap-2"></div>
 	<div class="row">
 		<div class="col-md-8 offset-md-2">
-			<div class="nk-plain-video" data-video="https://www.youtube.com/watch?v=Wb2qjfpOeMo" data-video-thumb="/assets/site/images/video-6-thumb.jpg"></div>
+			<iframe src="https://player.twitch.tv/?channel={{Setting::get('stream_channel')}}" style="display: block; width: 100%; height: 455px;" frameborder="0"></iframe>
 		</div>
 	</div>
 	<div class="nk-gap-2"></div>
 	<div class="nk-gap-6"></div>
-</div> --}}
+</div>
+@endif
 
 {{-- Next Raid Time --}}
 <div class="nk-box bg-dark-1 text-xs-center">

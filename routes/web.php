@@ -68,6 +68,8 @@ Route::group(['prefix' => 'panel', 'middleware' => 'auth'], function () {
         Route::post('teamspeak', 'TeamSpeakController@postIndex');
         Route::get('raidtime', 'RaidTimeController@index')->name('settings.raidtime');
         Route::post('raidtime', 'RaidTimeController@postIndex');
+        Route::get('stream', 'StreamController@index')->name('settings.stream');
+        Route::post('stream', 'StreamController@postIndex');
     });
 
     // Profile

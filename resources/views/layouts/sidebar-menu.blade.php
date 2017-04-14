@@ -65,6 +65,11 @@
 					<i class="fa fa-circle-o"></i> RaidTime
 				</a>
 			</li>
+			<li class="{{Nav::is('settings.stream', 'active')}}">
+				<a href="{{route('settings.stream')}}">
+					<i class="fa fa-circle-o"></i> Stream
+				</a>
+			</li>
 		</ul>
 	</li>
 </ul>
