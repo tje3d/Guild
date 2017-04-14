@@ -173,6 +173,7 @@ return [
         Yajra\Datatables\DatatablesServiceProvider::class,
         Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider::class,
         Appstract\Options\OptionsServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -239,6 +240,7 @@ return [
         'Nav'          => Facades\App\Helpers\NavHelper::class,
         'Setting'      => Appstract\Options\OptionFacade::class,
         'Markdown'     => Facades\Parsedown::class,
+        'RBAC'         => Facades\App\Helpers\RBAC::class,
 
     ],
 

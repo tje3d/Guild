@@ -5,11 +5,25 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserCreate;
 use App\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+use \Auth;
 use \Datatables;
 use \Hash;
+use \RBAC;
 
 class UsersController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            if (!RBAC::isAdmin() && !Auth::user()->hasAnyPermission('users')) {
+                return redirect()->route('dashboard');
+            }
+
+            return $next($request);
+        });
+    }
+
     public function index(Request $request)
     {
         return view('users.index');
@@ -55,6 +69,8 @@ class UsersController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        $user->syncRoles([Role::findOrFail($request->role_id)]);
+
         return redirect()->route('users.edit', $user)->with('success', 'Created Succesful');
     }
 
@@ -80,6 +96,7 @@ class UsersController extends Controller
             'name'     => 'required',
             'email'    => "required|email|unique:users,id,{$user->id}",
             'password' => 'sometimes|confirmed',
+            'role_id'  => 'required|exists:roles,id',
         ]);
 
         $user->update([
@@ -87,6 +104,8 @@ class UsersController extends Controller
             'email'    => $request->email,
             'password' => $request->password != '' ? Hash::make($request->password) : $user->password,
         ]);
+
+        $user->syncRoles([Role::findOrFail($request->role_id)]);
 
         return back()->with('success', 'Edited Succesfull');
     }
@@ -98,8 +117,8 @@ class UsersController extends Controller
      */
     public function delete(User $user)
     {
-    	$user->delete();
-    	
-    	return back()->with('success', 'Deleted Successful');
+        $user->delete();
+
+        return back()->with('success', 'Deleted Successful');
     }
 }

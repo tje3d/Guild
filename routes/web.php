@@ -47,6 +47,29 @@ Route::group(['prefix' => 'panel', 'middleware' => 'auth'], function () {
         Route::get('/{user}/delete', 'UsersController@delete')->name('users.delete');
     });
 
+    // Access Control
+    Route::group(['prefix' => 'rbac', 'namespace' => 'Rbac'], function(){
+    	Route::group(['prefix' => 'roles'], function(){
+    		Route::get('/', 'RolesController@index')->name('rbac.roles');
+    		Route::get('/datatable', 'RolesController@datatable')->name('rbac.roles.datatable');
+    		Route::get('/create', 'RolesController@create')->name('rbac.roles.create');
+	        Route::post('/create', 'RolesController@postCreate');
+	        Route::get('/{role}/edit', 'RolesController@edit')->name('rbac.roles.edit');
+	        Route::post('/{role}/edit', 'RolesController@postEdit');
+	        Route::get('/{role}/delete', 'RolesController@delete')->name('rbac.roles.delete');
+    	});
+
+    	Route::group(['prefix' => 'permissions'], function(){
+    		Route::get('/', 'PermissionsController@index')->name('rbac.permissions');
+    		Route::get('/datatable', 'PermissionsController@datatable')->name('rbac.permissions.datatable');
+    		Route::get('/create', 'PermissionsController@create')->name('rbac.permissions.create');
+	        Route::post('/create', 'PermissionsController@postCreate');
+	        Route::get('/{permission}/edit', 'PermissionsController@edit')->name('rbac.permissions.edit');
+	        Route::post('/{permission}/edit', 'PermissionsController@postEdit');
+	        Route::get('/{permission}/delete', 'PermissionsController@delete')->name('rbac.permissions.delete');
+    	});
+    });
+
     // Characters
     Route::group(['prefix' => 'characters'], function () {
         Route::get('/', 'CharactersController@index')->name('characters');

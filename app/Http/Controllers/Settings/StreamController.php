@@ -5,9 +5,22 @@ namespace App\Http\Controllers\Settings;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use \Setting;
+use \RBAC;
+use \Auth;
 
 class StreamController extends Controller
 {
+	public function __construct()
+	{
+		$this->middleware(function($request, $next){
+			if (!RBAC::isAdmin() && !Auth::user()->hasAnyPermission('settings.stream') ) {
+				return redirect()->route('dashboard');
+			}
+
+			return $next($request);
+		});
+	}
+
     public function index(Request $request)
     {
         return view('settings.stream');

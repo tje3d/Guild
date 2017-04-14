@@ -5,9 +5,22 @@ namespace App\Http\Controllers;
 use App\Character;
 use Illuminate\Http\Request;
 use \Datatables;
+use \RBAC;
+use \Auth;
 
 class CharactersController extends Controller
 {
+	public function __construct()
+	{
+		$this->middleware(function($request, $next){
+			if (!RBAC::isAdmin() && !Auth::user()->hasAnyPermission('characters') ) {
+				return redirect()->route('dashboard');
+			}
+
+			return $next($request);
+		});
+	}
+
     /**
      * Index page
      * @param  Request $request

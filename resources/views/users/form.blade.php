@@ -19,6 +19,13 @@
 				{!!$errors->first('email', '<span class="help-block">:message</span>')!!}
 			</div>
 		</div>
+		<div class="form-group {{$errors->first('role_id', 'has-error')}}">
+			{!! Form::label('role_id', 'Role', ['class' => 'col-sm-2 control-label']) !!}
+			<div class="col-sm-10">
+				{!! Form::select('role_id', \Spatie\Permission\Models\Role::get()->pluck('name', 'id'), old('role_id', isset($user) ? $user->roles()->first()->id : null), ['class' => 'form-control']) !!}
+				{!!$errors->first('role_id', '<span class="help-block">:message</span>')!!}
+			</div>
+		</div>
 		<div class="form-group {{$errors->first('password', 'has-error')}}">
 			{!! Form::label('password', 'Password', ['class' => 'col-sm-2 control-label']) !!}
 			<div class="col-sm-10">
