@@ -39,6 +39,14 @@ class RBAC
 	}
 
 	/**
+	 * Check if user has guild master role
+	 */
+	public function isGuildMaster()
+	{
+		return $this->hasRole('Guild Master');
+	}
+
+	/**
 	 * Check if user has permission
 	 */
 	public function hasPermission($name)

@@ -15,6 +15,8 @@ class DashboardController extends Controller
 			$route = 'users';
 		} else if (RBAC::isOfficer()) {
 			$route = 'settings.stream';
+		} else if (RBAC::isGuildMaster()) {
+			$route = 'characters';
 		}
 
 		if (empty($route)) {
