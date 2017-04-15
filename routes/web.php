@@ -13,7 +13,7 @@ Route::group([], function () {
 
     Route::get('/rules', 'RulesController')->name('rules');
 
-    Route::get('/addons', 'UsefullAddonsController')->name('addons');
+    Route::get('/addons', 'UsefullAddonsController')->name('usefulladdons');
 
     // Contact
     Route::group(['prefix' => 'contact'], function(){

@@ -110,8 +110,8 @@
                         <li class="{{Nav::regex('apply*', 'active')}}">
                             <a href="{{route('apply')}}"> Recruitment</a>
                         </li>
-                        <li class="{{Nav::is('addons', 'active')}}">
-                            <a href="{{route('addons')}}"> Addons</a>
+                        <li class="{{Nav::is('usefulladdons', 'active')}}">
+                            <a href="{{route('usefulladdons')}}"> Addons</a>
                         </li>
                         <li class="{{Nav::is('contact', 'active')}}">
                             <a href="{{route('contact')}}"> Contact Us</a>
