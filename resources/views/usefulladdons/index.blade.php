@@ -33,7 +33,7 @@
 			<span class="text-main-1">{{$addon->name}} </span>
 			➡ <em>{{$addon->description}}</em>
 			<i> - version: {{$addon->version}}</i>
-			<a href="{{$addon->getFirstMedia('files')->getUrl()}}" class="pull-right dlbtn"><i class="ion-android-download"></i></a>
+			<a href="{{$addon->getFirstMedia('files')->getUrl()}}" target="_blank" class="pull-right dlbtn"><i class="ion-android-download"></i></a>
 		</div>
 		<br>
 		@endforeach

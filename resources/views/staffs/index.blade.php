@@ -37,7 +37,7 @@
 					<div class="btn-group" role="group">
 						<button type="submit" class="btn btn-success">
 							<i class="fa fa-arrow-up"></i>
-							Upload
+							Create New Staff
 						</button>
 					</div>
 				</div>
