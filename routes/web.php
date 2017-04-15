@@ -100,6 +100,14 @@ Route::group(['prefix' => 'panel', 'middleware' => 'auth'], function () {
     	Route::post('/{id}/update', 'AddonsController@postUpdate')->name('addons.update');
     });
 
+    // Staffs
+    Route::group(['prefix' => 'staffs'], function(){
+    	Route::get('/', 'StaffsController@index')->name('staffs');
+    	Route::post('/', 'StaffsController@postCreate');
+    	Route::get('/{staff}/delete', 'StaffsController@delete')->name('staffs.delete');
+    	Route::post('/{id}/update', 'StaffsController@postUpdate')->name('staffs.update');
+    });
+
     // Settings
     Route::group(['prefix' => 'settings', 'namespace' => 'Settings'], function () {
         Route::get('rules', 'RulesController@index')->name('settings.rules');

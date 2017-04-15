@@ -154,34 +154,20 @@
 <div class="nk-gap-2"></div>
 <div class="nk-carousel-2" data-autoplay="12000" data-dots="true">
 	<div class="nk-carousel-inner">
+		@foreach(\App\Staff::latest()->get() as $staff)
 		<div>
 			<div>
 				<blockquote class="nk-testimonial-2">
-					<div class="nk-testimonial-photo" style="background-image: url('/img/catabolism.png');"></div>
-					<div class="nk-testimonial-name h4">Catabolism</div>
-					<div class="nk-testimonial-source">Guild Master</div>
+					@if(!is_null($staff->description))
+					<div class="nk-testimonial-body">{{$staff->description}}</div>
+					@endif
+					<div class="nk-testimonial-photo" style="background-image: url('{{$staff->getFirstMedia('images')->getUrl('thumb')}}');"></div>
+					<div class="nk-testimonial-name h4">{{$staff->name}}</div>
+					<div class="nk-testimonial-source">{{$staff->title}}</div>
 				</blockquote>
 			</div>
 		</div>
-		<div>
-			<div>
-				<blockquote class="nk-testimonial-2">
-					<div class="nk-testimonial-photo" style="background-image: url('/img/wenomica.png');"></div>
-					<div class="nk-testimonial-name h4">Wenomica</div>
-					<div class="nk-testimonial-source">Guild Master</div>
-				</blockquote>
-			</div>
-		</div>
-		<div>
-			<div>
-				<blockquote class="nk-testimonial-2">
-					<div class="nk-testimonial-photo" style="background-image: url('/img/tje3d.jpg');"></div>
-					<div class="nk-testimonial-body">tje3d@yahoo.com</div>
-					<div class="nk-testimonial-name h4">Moein</div>
-					<div class="nk-testimonial-source">Web Developer</div>
-				</blockquote>
-			</div>
-		</div>
+		@endforeach
 	</div>
 </div>
 <div class="nk-gap-2"></div>

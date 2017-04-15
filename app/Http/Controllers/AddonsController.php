@@ -62,7 +62,7 @@ class AddonsController extends Controller
         ]);
 
         if ($request->file('file')) {
-        	// $addon->getFirstMedia('files')->delete()
+        	$addon->getFirstMedia('files')->delete();
 	        $addon->addMedia($request->file('file'))->toMediaCollection('files');
         }
 

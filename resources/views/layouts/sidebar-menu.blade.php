@@ -88,6 +88,13 @@
 		</a>
 	</li>
 	@endif
+	@if(RBAC::isAdmin())
+	<li class="treeview {{Nav::regex('staffs', 'active')}}">
+		<a href="{{route('staffs')}}">
+			<i class="fa fa-street-view"></i> <span>Staffs</span>
+		</a>
+	</li>
+	@endif
 	@if(RBAC::isAdmin() || Auth::user()->hasAnyPermission('settings.rules', 'settings.teamspeak', 'settings.raidtime', 'settings.stream'))
 	<li class="treeview {{Nav::regex('settings', 'active')}}">
 		<a href="#">
