@@ -1,3 +1,5 @@
+Options -Indexes
+
 # Fonts
 # Add correct content-type for fonts
 AddType application/vnd.ms-fontobject .eot 

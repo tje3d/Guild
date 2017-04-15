@@ -13,6 +13,8 @@ Route::group([], function () {
 
     Route::get('/rules', 'RulesController')->name('rules');
 
+    Route::get('/addons', 'UsefullAddonsController')->name('addons');
+
     // Contact
     Route::group(['prefix' => 'contact'], function(){
     	Route::get('/', 'ContactController@index')->name('contact');
@@ -83,10 +85,19 @@ Route::group(['prefix' => 'panel', 'middleware' => 'auth'], function () {
         Route::get('{character}/setstatus/{type}', 'CharactersController@setStatus')->name('characters.setstatus');
     });
 
+    // Image Gallery
     Route::group(['prefix' => 'imagegallery'], function(){
     	Route::get('/', 'ImageGalleryController@index')->name('imagegallery');
     	Route::post('/', 'ImageGalleryController@postIndex');
     	Route::get('/{imageGallery}/delete', 'ImageGalleryController@delete')->name('imagegallery.delete');
+    });
+
+    // Addons
+    Route::group(['prefix' => 'addons'], function(){
+    	Route::get('/', 'AddonsController@index')->name('addons');
+    	Route::post('/', 'AddonsController@postCreate');
+    	Route::get('/{addon}/delete', 'AddonsController@delete')->name('addons.delete');
+    	Route::post('/{id}/update', 'AddonsController@postUpdate')->name('addons.update');
     });
 
     // Settings

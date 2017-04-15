@@ -59,7 +59,7 @@
     <!-- jQuery -->
     <script src="/assets/site/bower_components/jquery/dist/jquery.min.js"></script>
 
-
+	@stack('styles')
 
 </head>
 
@@ -95,7 +95,7 @@
             <div class="container">
                 <div class="nk-nav-table">
 
-                    <a href="index.html" class="nk-nav-logo">
+                    <a href="http://armory.warmane.com/guild/Ability/Icecrown/summary" class="nk-nav-logo">
                         <img src="/assets/site/images/logo.png" alt="" width="90">
                     </a>
 
@@ -109,6 +109,9 @@
                         </li>
                         <li class="{{Nav::regex('apply*', 'active')}}">
                             <a href="{{route('apply')}}"> Recruitment</a>
+                        </li>
+                        <li class="{{Nav::is('addons', 'active')}}">
+                            <a href="{{route('addons')}}"> Addons</a>
                         </li>
                         <li class="{{Nav::is('contact', 'active')}}">
                             <a href="{{route('contact')}}"> Contact Us</a>
