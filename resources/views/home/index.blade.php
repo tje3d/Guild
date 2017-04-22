@@ -38,7 +38,7 @@
     <div id="rev_slider_50_1_wrapper" class="rev_slider_wrapper fullscreen-container" data-alias="photography-carousel48" style="padding:0px;">
         <div id="rev_slider_50_1" class="rev_slider fullscreenbanner" style="display:none;" data-version="5.0.7">
             <ul>
-            	@foreach(\App\ImageGallery::latest()->get() as $imageGallery)
+            	@foreach(\App\ImageGallery::with('media')->latest()->get() as $imageGallery)
                 <li data-index="rs-185" data-transition="slideoverhorizontal" data-slotamount="7" data-easein="default" data-easeout="default" data-masterspeed="1500" data-thumb="{{$imageGallery->getFirstMedia('images')->getUrl('thumb')}}" data-rotate="0" data-saveperformance="off">
                     <img src="{{$imageGallery->getFirstMedia('images')->getUrl('site')}}" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
                 </li>
@@ -140,7 +140,11 @@
 	<div class="container">
 		<h2 class="display-4">Next Raid Time</h2>
 		<div class="nk-gap"></div>
+		@if(($raidtitle = Setting::get('raidtitle', ' ')) == ' ')
 		<div>Prepare yourself...</div>
+		@else
+		<h2 class="display-4">{{$raidtitle}}</h2>
+		@endif
 		<div class="nk-gap-4"></div>
 
 		<div class="nk-countdown" data-end="{{date("Y-m-d H:i", \App\Helpers\Countdown::nextRaid())}}" data-timezone="GMT"></div>
@@ -154,7 +158,7 @@
 <div class="nk-gap-2"></div>
 <div class="nk-carousel-2" data-autoplay="12000" data-dots="true">
 	<div class="nk-carousel-inner">
-		@foreach(\App\Staff::latest()->get() as $staff)
+		@foreach(\App\Staff::with('media')->latest()->get() as $staff)
 		<div>
 			<div>
 				<blockquote class="nk-testimonial-2">

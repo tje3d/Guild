@@ -23,6 +23,29 @@
 		</ul>
 	</li>
 	@endif
+	@if(RBAC::isAdmin() || RBAC::hasPerm('characters'))
+	<li class="treeview {{Nav::regex('characters', 'active')}}">
+		<a href="#">
+			<i class="fa fa-google-wallet"></i> <span>Characters</span>
+			<span class="pull-right-container">
+				<i class="fa fa-angle-left pull-right"></i>
+			</span>
+		</a>
+		<ul class="treeview-menu">
+			<li class="{{Nav::is('characters', 'active')}}">
+				<a href="{{route('characters')}}">
+					<i class="fa fa-circle-o"></i> Manage
+					<span class="pull-right-container">
+						<span class="label label-primary pull-right">{{\App\Character::notChecked()->count()}}</span>
+					</span>
+				</a>
+			</li>
+			<li class="{{Nav::is('characters.create', 'active')}}">
+				<a href="{{route('characters.create')}}"><i class="fa fa-circle-o"></i> Create</a>
+			</li>
+		</ul>
+	</li>
+	@endif
 	@if(RBAC::isAdmin() || RBAC::hasPerm('rbac'))
 	<li class="treeview {{Nav::regex('rbac', 'active')}}">
 		<a href="#">
@@ -47,29 +70,6 @@
 			</li>
 			<li class="{{Nav::is('rbac.permissions.create', 'active')}}">
 				<a href="{{route('rbac.permissions.create')}}"><i class="fa fa-circle-o"></i> Create Permission</a>
-			</li>
-		</ul>
-	</li>
-	@endif
-	@if(RBAC::isAdmin() || RBAC::hasPerm('characters'))
-	<li class="treeview {{Nav::regex('characters', 'active')}}">
-		<a href="#">
-			<i class="fa fa-google-wallet"></i> <span>Characters</span>
-			<span class="pull-right-container">
-				<i class="fa fa-angle-left pull-right"></i>
-			</span>
-		</a>
-		<ul class="treeview-menu">
-			<li class="{{Nav::is('characters', 'active')}}">
-				<a href="{{route('characters')}}">
-					<i class="fa fa-circle-o"></i> Manage
-					<span class="pull-right-container">
-						<span class="label label-primary pull-right">{{\App\Character::notChecked()->count()}}</span>
-					</span>
-				</a>
-			</li>
-			<li class="{{Nav::is('characters.create', 'active')}}">
-				<a href="{{route('characters.create')}}"><i class="fa fa-circle-o"></i> Create</a>
 			</li>
 		</ul>
 	</li>
