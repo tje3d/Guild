@@ -85,6 +85,20 @@ Route::group(['prefix' => 'panel', 'middleware' => 'auth'], function () {
         Route::get('{character}/setstatus/{type}', 'CharactersController@setStatus')->name('characters.setstatus');
     });
 
+    // Questions
+    Route::group(['prefix' => 'questions'], function () {
+        Route::get('/', 'QuestionsController@index')->name('questions');
+        Route::get('datatable', 'QuestionsController@datatable')->name('questions.datatable');
+        Route::get('create', 'QuestionsController@create')->name('questions.create');
+        Route::post('create', 'QuestionsController@postCreate');
+        Route::get('{question}/delete', 'QuestionsController@delete')->name('questions.delete');
+        Route::get('{question}/edit', 'QuestionsController@edit')->name('questions.edit');
+        Route::post('{question}/edit', 'QuestionsController@postEdit');
+        Route::get('{question}/delete', 'QuestionsController@delete')->name('questions.delete');
+        Route::get('sort', 'QuestionsController@sort')->name('questions.sort');
+        Route::post('sort', 'QuestionsController@postSort');
+    });
+
     // Image Gallery
     Route::group(['prefix' => 'imagegallery'], function(){
     	Route::get('/', 'ImageGalleryController@index')->name('imagegallery');

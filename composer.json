@@ -12,6 +12,7 @@
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4",
+        "spatie/eloquent-sortable": "^3.2",
         "spatie/laravel-medialibrary": "^5.9",
         "spatie/laravel-permission": "^2.0",
         "thomaswelton/laravel-gravatar": "^1.1",

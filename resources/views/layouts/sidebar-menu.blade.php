@@ -46,6 +46,29 @@
 		</ul>
 	</li>
 	@endif
+	@if(RBAC::isAdmin() || RBAC::hasPerm('questions'))
+	<li class="treeview {{Nav::regex('questions', 'active')}}">
+		<a href="#">
+			<i class="fa fa-question"></i> <span>Questions</span>
+			<span class="pull-right-container">
+				<i class="fa fa-angle-left pull-right"></i>
+			</span>
+		</a>
+		<ul class="treeview-menu">
+			<li class="{{Nav::is('questions', 'active')}}">
+				<a href="{{route('questions')}}">
+					<i class="fa fa-circle-o"></i> Manage
+				</a>
+			</li>
+			<li class="{{Nav::is('questions.create', 'active')}}">
+				<a href="{{route('questions.create')}}"><i class="fa fa-circle-o"></i> Create</a>
+			</li>
+			<li class="{{Nav::is('questions.sort', 'active')}}">
+				<a href="{{route('questions.sort')}}"><i class="fa fa-circle-o"></i> Sort</a>
+			</li>
+		</ul>
+	</li>
+	@endif
 	@if(RBAC::isAdmin() || RBAC::hasPerm('rbac'))
 	<li class="treeview {{Nav::regex('rbac', 'active')}}">
 		<a href="#">

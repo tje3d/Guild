@@ -19,7 +19,7 @@
 		</div>
 	</div>
 	<div class="col-md-8 offset-md-2">
-		@foreach(\App\Question::get() as $question)
+		@foreach(\App\Question::ordered()->get() as $question)
 		<div class="form-group {{ $errors->first("question[{$question->id}]", 'nk-error') }}">
 			{!! Form::label("question[{$question->id}]", $loop->index+1 . '. ' . $question->ask, ['class' => 'text-left']) !!}
 

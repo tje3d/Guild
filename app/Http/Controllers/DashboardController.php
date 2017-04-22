@@ -19,10 +19,11 @@ class DashboardController extends Controller
 			$route = 'characters';
 		}
 
-		if (empty($route)) {
-			throw new \Exception('Please define a home page.');
+		if (!empty($route)) {
+			// throw new \Exception('Please define a home page.');
+			return redirect()->route($route);
 		}
 
-		return redirect()->route($route);
+		return view('dashboard.index');
 	}
 }
