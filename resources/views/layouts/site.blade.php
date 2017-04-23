@@ -113,7 +113,7 @@
                         <li class="{{Nav::is('usefulladdons', 'active')}}">
                             <a href="{{route('usefulladdons')}}"> Addons</a>
                         </li>
-                        <li class="{{Nav::is('tactics', 'active')}}">
+                        <li class="{{Nav::regex('tactics*', 'active')}}">
                             <a href="{{route('tactics')}}"> Tactics</a>
                         </li>
                         <li class="{{Nav::is('contact', 'active')}}">
