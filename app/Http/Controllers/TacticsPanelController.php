@@ -110,13 +110,19 @@ class TacticsPanelController extends Controller
     {
         $this->validate($request, [
             'title'   => "required",
-            'content' => 'required'
+            'content' => 'required',
+            'image'   => 'sometimes|image|mimes:jpeg,jpg,gif,png'
         ]);
 
         $tactic->update([
             'title'   => $request->title,
             'content' => $request->content
         ]);
+
+        if ($request->file('image')) {
+        	$tactic->getFirstMedia()->delete();
+            $tactic->addMedia($request->file('image'))->toMediaCollection();
+        }
 
         return back()->with('success', 'Edited Successful');
     }
