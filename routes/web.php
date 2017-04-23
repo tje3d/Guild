@@ -13,6 +13,11 @@ Route::group([], function () {
 
     Route::get('/rules', 'RulesController')->name('rules');
 
+    Route::group(['prefix' => 'tactics'], function(){
+	    Route::get('/', 'TacticsController@index')->name('tactics');
+	    Route::get('/{tactic}/readmore', 'TacticsController@readmore')->name('tactics.readmore');
+    });
+
     Route::get('/addons', 'UsefullAddonsController')->name('usefulladdons');
 
     // Contact
@@ -97,6 +102,18 @@ Route::group(['prefix' => 'panel', 'middleware' => 'auth'], function () {
         Route::get('{question}/delete', 'QuestionsController@delete')->name('questions.delete');
         Route::get('sort', 'QuestionsController@sort')->name('questions.sort');
         Route::post('sort', 'QuestionsController@postSort');
+    });
+
+    // Tactics
+    Route::group(['prefix' => 'tactics'], function () {
+        Route::get('/', 'TacticsPanelController@index')->name('tacticspanel');
+        Route::get('datatable', 'TacticsPanelController@datatable')->name('tacticspanel.datatable');
+        Route::get('create', 'TacticsPanelController@create')->name('tacticspanel.create');
+        Route::post('create', 'TacticsPanelController@postCreate');
+        Route::get('{tactic}/delete', 'TacticsPanelController@delete')->name('tacticspanel.delete');
+        Route::get('{tactic}/edit', 'TacticsPanelController@edit')->name('tacticspanel.edit');
+        Route::post('{tactic}/edit', 'TacticsPanelController@postEdit');
+        Route::get('{tactic}/delete', 'TacticsPanelController@delete')->name('tacticspanel.delete');
     });
 
     // Image Gallery

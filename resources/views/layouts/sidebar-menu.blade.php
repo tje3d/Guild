@@ -69,6 +69,26 @@
 		</ul>
 	</li>
 	@endif
+	@if(RBAC::isAdmin() || RBAC::hasPerm('tactics'))
+	<li class="treeview {{Nav::regex('tacticspanel', 'active')}}">
+		<a href="#">
+			<i class="fa fa-random"></i> <span>Tactics</span>
+			<span class="pull-right-container">
+				<i class="fa fa-angle-left pull-right"></i>
+			</span>
+		</a>
+		<ul class="treeview-menu">
+			<li class="{{Nav::is('tacticspanel', 'active')}}">
+				<a href="{{route('tacticspanel')}}">
+					<i class="fa fa-circle-o"></i> Manage
+				</a>
+			</li>
+			<li class="{{Nav::is('tacticspanel.create', 'active')}}">
+				<a href="{{route('tacticspanel.create')}}"><i class="fa fa-circle-o"></i> Create</a>
+			</li>
+		</ul>
+	</li>
+	@endif
 	@if(RBAC::isAdmin() || RBAC::hasPerm('rbac'))
 	<li class="treeview {{Nav::regex('rbac', 'active')}}">
 		<a href="#">

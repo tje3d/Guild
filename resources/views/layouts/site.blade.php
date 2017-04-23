@@ -113,6 +113,9 @@
                         <li class="{{Nav::is('usefulladdons', 'active')}}">
                             <a href="{{route('usefulladdons')}}"> Addons</a>
                         </li>
+                        <li class="{{Nav::is('tactics', 'active')}}">
+                            <a href="{{route('tactics')}}"> Tactics</a>
+                        </li>
                         <li class="{{Nav::is('contact', 'active')}}">
                             <a href="{{route('contact')}}"> Contact Us</a>
                         </li>
