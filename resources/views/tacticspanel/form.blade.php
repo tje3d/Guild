@@ -45,8 +45,11 @@
 {!! Form::close() !!}
 
 @push('scripts')
-<script src="//cdn.ckeditor.com/4.6.2/full/ckeditor.js"></script>
+<script src="//cdn.ckeditor.com/4.6.2/full-all/ckeditor.js"></script>
 <script>
-	CKEDITOR.replace( 'content' );
+	CKEDITOR.plugins.addExternal( 'html5video', '{{url('js/html5video/plugin.js')}}' );
+	CKEDITOR.replace( 'content', {
+		extraPlugins: 'html5video',
+	} );
 </script>
 @endpush
