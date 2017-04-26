@@ -13,7 +13,7 @@ class AddEmailFieldToCharactersTable extends Migration
      */
     public function up()
     {
-        Schema::table('Characters', function (Blueprint $table) {
+        Schema::table('characters', function (Blueprint $table) {
             $table->string('email')->nullable();
         });
     }
@@ -25,7 +25,7 @@ class AddEmailFieldToCharactersTable extends Migration
      */
     public function down()
     {
-        Schema::table('Characters', function (Blueprint $table) {
+        Schema::table('characters', function (Blueprint $table) {
             $table->dropColumn('email');
         });
     }

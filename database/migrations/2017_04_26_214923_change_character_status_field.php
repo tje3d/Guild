@@ -13,7 +13,7 @@ class ChangeCharacterStatusField extends Migration
      */
     public function up()
     {
-        Schema::table('Characters', function (Blueprint $table) {
+        Schema::table('characters', function (Blueprint $table) {
         	$table->dropColumn('accepted');
             $table->enum('status', ['accepted', 'rejected'])->nullable();
         });
@@ -26,7 +26,7 @@ class ChangeCharacterStatusField extends Migration
      */
     public function down()
     {
-        Schema::table('Characters', function (Blueprint $table) {
+        Schema::table('characters', function (Blueprint $table) {
             $table->dropColumn('status');
             $table->timestamp('accepted')->nullable();
         });
