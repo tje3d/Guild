@@ -22,7 +22,7 @@ class ApplyController extends Controller
 
         // Remove Cached Hero Name
         $this->middleware(function ($request, $next) {
-            session()->forget('apply');
+            session()->forget('apply', 'apply_email');
             return $next($request);
         })->only('index', 'searchHero');
     }
@@ -41,9 +41,10 @@ class ApplyController extends Controller
     public function searchHero(Request $request)
     {
         $this->validate($request, [
-            'hero' => 'required|max:30|unique:characters,name',
+            'hero'  => 'required|max:30|unique:characters,name',
+            'email' => 'required|email'
         ], [
-            'hero.unique' => 'This character already registerd',
+            'hero.unique' => 'This character already registerd'
         ]);
 
         $heroName = ucfirst(strtolower($request->hero));
@@ -63,6 +64,7 @@ class ApplyController extends Controller
         }
 
         session()->put('apply', $heroName);
+        session()->put('apply_email', $request->email);
 
         return redirect()->route('apply.questions');
     }
@@ -83,12 +85,13 @@ class ApplyController extends Controller
     public function postQuestions(Request $request)
     {
         $heroName   = session()->get('apply');
+        $email      = session()->get('apply_email');
         $warmanChar = Warmane::character($heroName);
         $messageBag = new MessageBag();
         $questions  = $request->get('question', []);
 
         if (!$request->rules) {
-        	$messageBag->add("rules", 'Please accepts our rules.');
+            $messageBag->add("rules", 'Please accepts our rules.');
         }
 
         foreach (\App\Question::get() as $question) {
@@ -103,18 +106,19 @@ class ApplyController extends Controller
 
         $character = \App\Character::create([
             'name'     => $heroName,
+            'email'    => $email,
             'level'    => $warmanChar->level(),
             'klass_id' => \App\Klass::where('name', $warmanChar->klass())->first()->id,
             'race_id'  => \App\Race::where('name', $warmanChar->race())->first()->id,
             'faction'  => $warmanChar->faction(),
             'gender'   => $warmanChar->gender() == "Male" ? 0 : 1,
-            'guild'    => $warmanChar->guild(),
+            'guild'    => $warmanChar->guild()
         ]);
 
         foreach ($questions as $id => $answer) {
             $character->answers()->create([
                 'question_id' => $id,
-                'data'        => $answer,
+                'data'        => $answer
             ]);
         }
 

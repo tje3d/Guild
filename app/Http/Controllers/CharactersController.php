@@ -3,23 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Character;
+use App\Mail\CharacterStatus;
 use Illuminate\Http\Request;
+use \Mail;
+use \Auth;
 use \Datatables;
 use \RBAC;
-use \Auth;
 
 class CharactersController extends Controller
 {
-	public function __construct()
-	{
-		$this->middleware(function($request, $next){
-			if (!RBAC::isAdmin() && !Auth::user()->hasAnyPermission('characters') ) {
-				return redirect()->route('dashboard');
-			}
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            if (!RBAC::isAdmin() && !Auth::user()->hasAnyPermission('characters')) {
+                return redirect()->route('dashboard');
+            }
 
-			return $next($request);
-		});
-	}
+            return $next($request);
+        });
+    }
 
     /**
      * Index page
@@ -48,16 +50,14 @@ class CharactersController extends Controller
                 return \Html::image($item->klassIcon());
             })
             ->addColumn('status', function ($item) {
-            	if (!is_null($item->accepted)) {
-            		return "<a href=\"".route('characters.setstatus', ['character' => $item, 'type' => 'uncheck'])."\"><span class=\"label label-success\">Accepted</span></a>";
-            	} else {
-            		return "<a href=\"".route('characters.setstatus', ['character' => $item, 'type' => 'check'])."\"><span class=\"label label-warning\">Not Checked</span></a>";
-            	}
+                $status = $item->getStatus();
+                return "<span class=\"label " . $status->labelColor() . "\">" . $status->toString() . "</span>";
             })
             ->addColumn('action', function ($item) {
                 $col = '<div class="btn-group">';
                 $col .= '<a href="' . route('characters.delete', [$item]) . '" class="btn btn-xs btn-warning" onclick="return confirm(\'You sure?\')"><i class="fa fa-trash"></i></a>';
                 $col .= '<a href="' . route('characters.edit', [$item]) . '" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>';
+                $col .= '<a href="' . route('characters.status', [$item]) . '" class="btn btn-xs btn-success"><i class="fa fa-refresh"></i></a>';
                 $col .= '</div>';
                 return $col;
             })
@@ -70,9 +70,9 @@ class CharactersController extends Controller
      */
     public function delete(Character $character)
     {
-    	$character->delete();
+        $character->delete();
 
-    	return back()->with('success', 'Character deleted successful.');
+        return back()->with('success', 'Character deleted successful.');
     }
 
     /**
@@ -92,28 +92,30 @@ class CharactersController extends Controller
     {
         $this->validate($request, [
             'name'     => 'required|unique:characters,name',
+            'email'    => "required|email",
             'level'    => 'sometimes|numeric|max:255|min:1',
             'guild'    => 'sometimes',
             'race_id'  => 'required|exists:races,id',
             'klass_id' => 'required|exists:klasses,id',
             'faction'  => 'required|in:Alliance,Horde',
-            'gender'   => 'required|in:0,1',
+            'gender'   => 'required|in:0,1'
         ]);
 
         $character = \App\Character::create([
             'name'     => ucfirst(strtolower($request->name)),
+            'email'    => $request->email,
             'level'    => $request->level,
             'guild'    => $request->guild,
             'race_id'  => $request->race_id,
             'klass_id' => $request->klass_id,
             'faction'  => $request->faction,
-            'gender'   => $request->gender,
+            'gender'   => $request->gender
         ]);
 
         foreach ($request->question as $id => $answer) {
             $character->answers()->create([
                 'question_id' => $id,
-                'data'        => $answer ?: '',
+                'data'        => $answer ?: ''
             ]);
         }
 
@@ -135,22 +137,24 @@ class CharactersController extends Controller
     {
         $this->validate($request, [
             'name'     => "required|unique:characters,name,{$character->id}",
+            'email'    => "required|email",
             'level'    => 'sometimes|numeric|max:255|min:1',
             'guild'    => 'sometimes',
             'race_id'  => 'required|exists:races,id',
             'klass_id' => 'required|exists:klasses,id',
             'faction'  => 'required|in:Alliance,Horde',
-            'gender'   => 'required|in:0,1',
+            'gender'   => 'required|in:0,1'
         ]);
 
         $character->update([
             'name'     => ucfirst(strtolower($request->name)),
+            'email'    => $request->email,
             'level'    => $request->level ?: $character->level,
             'guild'    => $request->guild ?: $character->guild,
             'race_id'  => $request->race_id,
             'klass_id' => $request->klass_id,
             'faction'  => $request->faction,
-            'gender'   => $request->gender,
+            'gender'   => $request->gender
         ]);
 
         foreach ($request->question as $id => $answer) {
@@ -164,15 +168,46 @@ class CharactersController extends Controller
 
     /**
      * Change character accepted status
-     * @param Character $character
-     * @param Request   $request
-     * @param string    $type      can be check or uncheck
      */
-    public function setStatus(Character $character, Request $request, $type)
+    public function status(Character $character, Request $request)
     {
-    	$newStatus = $type == "check" ? date("Y-m-d H:i:s") : null;
-    	$character->update(['accepted' => $newStatus]);
+        return view('characters.status', compact('character'));
+    }
 
-    	return back()->with('success', 'Status Changed Successful');
+    /**
+     * Handle change status page form
+     */
+    public function postStatus(Character $character, Request $request)
+    {
+        $this->validate($request, [
+            'status'  => 'sometimes|nullable|in:accepted,rejected',
+            'email'   => 'required|in:0,1',
+            'message' => 'required_if:email,1'
+        ], [
+            'message.required_if' => 'The email message field is required.'
+        ]);
+
+        // Response
+        $redirect = back();
+
+        $character->update(['status' => $request->status]);
+
+        // No Email
+        if ($request->email == 1 && is_null($character->email)) {
+            $redirect->with('error', 'No email set for this character');
+        }
+
+        if ($request->email == 1 && !is_null($character->email)) {
+	        session(['lastStatusMessage' => $request->message]);
+
+            try {
+                Mail::send(new CharacterStatus($character, $request->message));
+            } catch (Throwable $e) {}
+        } else {
+        	session()->forget('lastStatusMessage');
+        }
+
+        $redirect->with('success', 'Status changed succesfull');
+        return $redirect;
     }
 }

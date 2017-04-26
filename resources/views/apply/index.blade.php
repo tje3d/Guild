@@ -11,8 +11,11 @@
 			@include('components.alert-both')
 
 			{!! Form::open() !!}
-				{!! Form::text('hero', null, ['placeholder' => 'Hero Name *', 'autocomplete' => 'off', 'class' => 'form-control text-xs-center ' . $errors->first('hero', 'nk-error')]) !!}
+				{!! Form::text('hero', null, ['placeholder' => 'Hero Name *', 'autofocus', 'autocomplete' => 'off', 'class' => 'form-control text-xs-center ' . $errors->first('hero', 'nk-error')]) !!}
 				{!! $errors->first('hero', '<div class="nk-error">:message</div>') !!}
+				<div class="nk-gap"></div>
+				{!! Form::text('email', null, ['placeholder' => 'Email Address *', 'autocomplete' => 'off', 'class' => 'form-control text-xs-center ' . $errors->first('email', 'nk-error')]) !!}
+				{!! $errors->first('email', '<div class="nk-error">:message</div>') !!}
 				<div class="nk-gap"></div>
 				<button class="nk-btn nk-btn-lg nk-btn-block link-effect-4">Go Next Step <i class="ion-arrow-right-c"></i></button>
 			{!! Form::close() !!}

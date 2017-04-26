@@ -87,7 +87,8 @@ Route::group(['prefix' => 'panel', 'middleware' => 'auth'], function () {
         Route::get('{character}/edit', 'CharactersController@edit')->name('characters.edit');
         Route::post('{character}/edit', 'CharactersController@postEdit');
         Route::get('{character}/delete', 'CharactersController@delete')->name('characters.delete');
-        Route::get('{character}/setstatus/{type}', 'CharactersController@setStatus')->name('characters.setstatus');
+        Route::get('{character}/status', 'CharactersController@status')->name('characters.status');
+        Route::post('{character}/status', 'CharactersController@postStatus');
     });
 
     // Questions

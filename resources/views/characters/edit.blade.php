@@ -4,7 +4,7 @@
 
 @section('breadcrumb')
 <li><a href="{{route('characters')}}">Characters</a></li>
-<li class="active">Create</li>
+<li class="active">Edit</li>
 @stop
 
 @section('content')

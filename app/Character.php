@@ -61,6 +61,15 @@ class Character extends Model
      */
     public function scopeNotChecked($query)
     {
-    	return $query->whereNull('accepted');
+    	return $query->whereNull('status');
+    }
+
+    /**
+     * Character Status Informations
+     * @return App\CharacterStatus
+     */
+    public function getStatus()
+    {
+    	return new CharacterStatus($this);
     }
 }

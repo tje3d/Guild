@@ -8,6 +8,16 @@
 	</div>
 </div>
 
+<div class="form-group {{ $errors->first('email', 'has-error') }}">
+{!! Form::label('email', 'Email', ['class' => 'col-md-2 control-label']) !!}
+
+	<div class="col-md-9">
+	{!! Form::text('email', null, ['class' => 'form-control', 'autofocus']) !!}
+
+	{!! $errors->first('email', '<span class="help-block">:message</span>') !!}
+	</div>
+</div>
+
 <div class="form-group {{ $errors->first('level', 'has-error') }}">
 {!! Form::label('level', 'Level', ['class' => 'col-md-2 control-label']) !!}
 

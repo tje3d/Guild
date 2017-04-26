@@ -26,17 +26,15 @@
 	</div>
 </div>
 {!! Form::close() !!}
-
-<div class="row">
-	<div class="col-sm-8 col-sm-offset-2">
-		<div class="box box-success">
-			<div class="box-header with-border">
-				Preview
-			</div>
-			<div class="box-body">
-				{!! Markdown::parse(Setting::get('rules')) !!}
-			</div>
-		</div>
-	</div>
-</div>
 @stop
+
+@push('styles')
+<link rel="stylesheet" href="http://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+@endpush
+
+@push('scripts')
+<script src="http://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+<script>
+	new SimpleMDE();
+</script>
+@endpush

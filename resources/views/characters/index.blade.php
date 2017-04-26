@@ -21,7 +21,7 @@
 						<th>Guild</th>
 						<th>Status</th>
 						<th>Date Joined</th>
-						<th width="50"></th>
+						<th width="80"></th>
 					</tr>
 				</thead>
 			</table>
