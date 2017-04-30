@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\HasMedia\Interfaces\HasMedia;
 
-class Addon extends Model implements HasMedia
+class Sound extends Model implements HasMedia
 {
-	use HasMediaTrait;
+    use HasMediaTrait;
 
-	protected $guarded = [];
-	protected $table   = 'addons';
-	protected $with    = ['media'];
+    protected $guarded = [];
+    protected $table   = 'sounds';
+    protected $with    = ['media'];
 }

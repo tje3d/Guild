@@ -138,7 +138,7 @@
 		</a>
 	</li>
 	@endif
-	@if(RBAC::isAdmin() || Auth::user()->hasAnyPermission('settings.rules', 'settings.teamspeak', 'settings.raidtime', 'settings.stream'))
+	@if(RBAC::isAdmin() || Auth::user()->hasAnyPermission('settings.rules', 'settings.teamspeak', 'settings.raidtime', 'settings.stream', 'settings.sound'))
 	<li class="treeview {{Nav::regex('settings', 'active')}}">
 		<a href="#">
 			<i class="fa fa-cogs"></i> <span>Settings</span>
@@ -172,6 +172,13 @@
 			<li class="{{Nav::is('settings.stream', 'active')}}">
 				<a href="{{route('settings.stream')}}">
 					<i class="fa fa-circle-o"></i> Stream
+				</a>
+			</li>
+			@endif
+			@if(RBAC::isAdmin() || RBAC::hasPerm('settings.sound'))
+			<li class="{{Nav::is('settings.sound', 'active')}}">
+				<a href="{{route('settings.sound')}}">
+					<i class="fa fa-circle-o"></i> Sound
 				</a>
 			</li>
 			@endif

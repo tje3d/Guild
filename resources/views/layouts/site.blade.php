@@ -259,9 +259,13 @@
     <!-- Prism -->
     <script src="/assets/site/bower_components/prism/prism.js"></script>
 
+    <script>
+    	window.backgroundMusic = "{{\App\Sound::find(Setting::get('music'))->getFirstMedia()->getUrl()}}";
+    </script>
+
     <!-- GODLIKE -->
-    <script src="/assets/site/js/godlike.js"></script>
-    <script src="/assets/site/js/godlike-init.js"></script>
+    <script src="/assets/site/js/godlike.js?r={{md5(config('app.version'))}}"></script>
+    <script src="/assets/site/js/godlike-init.js?r={{md5(config('app.version'))}}"></script>
     <!-- END: Scripts -->
 
 

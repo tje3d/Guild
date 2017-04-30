@@ -27,6 +27,7 @@ class RBAC
 	 */
 	public function isAdmin()
 	{
+
 		return $this->hasRole('Admin');
 	}
 

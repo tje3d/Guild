@@ -13,6 +13,7 @@ class ImageGallery extends Model implements HasMedia, HasMediaConversions
 
 	protected $guarded = [];
 	protected $table   = 'imagegalleries';
+	protected $with    = ['media'];
 
 	public function registerMediaConversions()
 	{

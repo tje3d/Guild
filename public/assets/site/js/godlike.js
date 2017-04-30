@@ -21,7 +21,7 @@ var options = {
     enableCookieAlert: false,
     scrollToAnchorSpeed: 700,
     parallaxSpeed: 0.6,
-    backgroundMusic: '/assets/site/mp3/purpleplanetmusic-desolation.mp3',
+    backgroundMusic: backgroundMusic,
     backgroundMusicVolume: 100,
     backgroundMusicAutoplay: true,
 

@@ -150,6 +150,10 @@ Route::group(['prefix' => 'panel', 'middleware' => 'auth'], function () {
         Route::post('raidtime', 'RaidTimeController@postIndex');
         Route::get('stream', 'StreamController@index')->name('settings.stream');
         Route::post('stream', 'StreamController@postIndex');
+        Route::get('sound', 'SoundController@index')->name('settings.sound');
+        Route::post('sound', 'SoundController@postIndex');
+        Route::get('sound/{sound}/delete', 'SoundController@delete')->name('settings.sound.delete');
+        Route::get('sound/{sound}/select', 'SoundController@select')->name('settings.sound.select');
     });
 
     // Profile

@@ -13,6 +13,7 @@ class Staff extends Model implements HasMedia, HasMediaConversions
 
 	protected $guarded = [];
 	protected $table   = 'staffs';
+	protected $with    = ['media'];
 
 	public function registerMediaConversions()
 	{
