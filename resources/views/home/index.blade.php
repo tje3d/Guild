@@ -86,7 +86,7 @@
 	<div class="container text-xs-center">
 		<div class="nk-gap-6"></div>
 		<div class="nk-gap-2"></div>
-		<h2 class="nk-title h1">About The Guild</h2>
+		<h2 class="nk-title h1">معرفی گیلد</h2>
 		<div class="nk-gap-3"></div>
 
 		<p class="lead">2017 will be a totally new year, had a share of warmane ( icecrown ) in 2016, still we come on top. We are still interested in more active players for in the guild. We had a great start as a guild. In a short time we gathered a group of nice friendly active members and got foot on land on the Warmane icecrown global map.</p>
@@ -97,7 +97,7 @@
 				<div class="nk-box-2 nk-box-line">
 					<div class="nk-counter-3">
 						<div class="nk-count">+200</div>
-						<h3 class="nk-counter-title h4">Active Members</h3>
+						<h3 class="nk-counter-title h4">عضو فعال</h3>
 						<div class="nk-gap-1"></div>
 					</div>
 				</div>
@@ -106,7 +106,7 @@
 				<div class="nk-box-2 nk-box-line">
 					<div class="nk-counter-3">
 						<div class="nk-count">+10</div>
-						<h3 class="nk-counter-title h4">Weekly Successful Raid</h3>
+						<h3 class="nk-counter-title h4">رِید موفق هفتگی</h3>
 						<div class="nk-gap-1"></div>
 					</div>
 				</div>

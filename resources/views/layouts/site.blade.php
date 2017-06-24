@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{{config('app.name')}} Warmane PVE Guild">
     <meta name="author" content="tje3d">
-    <title>@if(isset($title)){{$title}} - @endif{{config('app.name')}} - Warmane PVE Guild</title>
+    <title>@if(isset($title)){{$title}} - @endif{{config('app.name')}} - Caspian PVE Guild</title>
     <link rel="icon" type="image/png" href="/assets/site/images/favicon.png">
 
     <!-- START: Styles -->
@@ -95,29 +95,29 @@
             <div class="container">
                 <div class="nk-nav-table">
 
-                    <a href="http://armory.warmane.com/guild/Ability/Icecrown/summary" class="nk-nav-logo">
+                    <a href="http://caspiangc.ir" class="nk-nav-logo">
                         <img src="/assets/site/images/logo.png" alt="" width="90">
                     </a>
 
 
-                    <ul class="nk-nav nk-nav-right hidden-md-down" data-nav-mobile="#nk-nav-mobile">
+                    <ul class="nk-nav nk-nav-right hidden-md-down" data-nav-mobile="#nk-nav-mobile" dir="rtl">
                         <li class="{{Nav::is('home', 'active')}}">
-                            <a href="{{route('home')}}"> Home</a>
+                            <a href="{{route('home')}}"> صفحه نخست</a>
                         </li>
                         <li class="{{Nav::is('rules', 'active')}}">
-                            <a href="{{route('rules')}}"> Rules</a>
+                            <a href="{{route('rules')}}"> قوانین و مقررات</a>
                         </li>
                         <li class="{{Nav::regex('apply*', 'active')}}">
-                            <a href="{{route('apply')}}"> Recruitment</a>
+                            <a href="{{route('apply')}}"> ثبت نام</a>
                         </li>
                         <li class="{{Nav::is('usefulladdons', 'active')}}">
-                            <a href="{{route('usefulladdons')}}"> Addons</a>
+                            <a href="{{route('usefulladdons')}}"> افزونه ها</a>
                         </li>
                         <li class="{{Nav::regex('tactics*', 'active')}}">
-                            <a href="{{route('tactics')}}"> Tactics</a>
+                            <a href="{{route('tactics')}}"> تاکتیک ها</a>
                         </li>
                         <li class="{{Nav::is('contact', 'active')}}">
-                            <a href="{{route('contact')}}"> Contact Us</a>
+                            <a href="{{route('contact')}}"> ارتباط با ما</a>
                         </li>
                     </ul>
                 </div>
