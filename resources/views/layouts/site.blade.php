@@ -100,24 +100,24 @@
                     </a>
 
 
-                    <ul class="nk-nav nk-nav-right hidden-md-down" data-nav-mobile="#nk-nav-mobile" dir="rtl">
+                    <ul class="nk-nav nk-nav-right hidden-md-down" data-nav-mobile="#nk-nav-mobile">
                         <li class="{{Nav::is('home', 'active')}}">
-                            <a href="{{route('home')}}"> صفحه نخست</a>
+                            <a href="{{route('home')}}"> Home</a>
                         </li>
                         <li class="{{Nav::is('rules', 'active')}}">
-                            <a href="{{route('rules')}}"> قوانین و مقررات</a>
+                            <a href="{{route('rules')}}"> Rules</a>
                         </li>
                         <li class="{{Nav::regex('apply*', 'active')}}">
-                            <a href="{{route('apply')}}"> ثبت نام</a>
+                            <a href="{{route('apply')}}"> Register</a>
                         </li>
                         <li class="{{Nav::is('usefulladdons', 'active')}}">
-                            <a href="{{route('usefulladdons')}}"> افزونه ها</a>
+                            <a href="{{route('usefulladdons')}}"> Addons</a>
                         </li>
                         <li class="{{Nav::regex('tactics*', 'active')}}">
-                            <a href="{{route('tactics')}}"> تاکتیک ها</a>
+                            <a href="{{route('tactics')}}"> Tactics</a>
                         </li>
                         <li class="{{Nav::is('contact', 'active')}}">
-                            <a href="{{route('contact')}}"> ارتباط با ما</a>
+                            <a href="{{route('contact')}}"> Contact Us</a>
                         </li>
                     </ul>
                 </div>
